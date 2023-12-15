@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -25,6 +26,9 @@ Route::get('/dashboard', function () {
 Route::get('/companies', function () {
     return view('companies');
 })->middleware(['auth', 'verified'])->name('companies');
+
+
+Route::post('/companies', [CompanyController::class, "store"])->middleware(['auth', 'verified'])->name('companies');
 
 Route::get('/employees', function () {
     return view('employees');

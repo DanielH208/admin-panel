@@ -10,10 +10,13 @@ class CompanyController extends Controller
 {
     public function store() {
 
-        // $attributes = request()->validate([
-        //     "name" => "required"
-        // ]);
+        $attributes = request()->validate([
+            "name" => ["required"],
+            "logo" => ["image"]
+        ]);
 
+
+        $attributes["logo"] = request()->file("logo")->store("public/logos");
 
         Company::create(request()->all());
 

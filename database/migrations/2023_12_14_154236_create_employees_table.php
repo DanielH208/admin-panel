@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('firstname')->require();
             $table->string('lastname')->require();
-            $table->string('company');
-            $table->string('email')->unique();
-            $table->varchar('phone');
+            $table->string('company')->require();
+            $table->string('email')->unique()->nullable();
+            $table->string('phone')->nullable();
         });
     }
 

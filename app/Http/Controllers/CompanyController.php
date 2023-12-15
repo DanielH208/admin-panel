@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Rule;
 use App\Models\Company;
 use Illuminate\Http\Request;
 
@@ -11,14 +12,19 @@ class CompanyController extends Controller
     public function store() {
 
         $attributes = request()->validate([
-            "name" => ["required"],
-            "logo" => ["image"]
+            "name" => ["required", "string"],
+            "logo" => ["image"],
+            "email" => ["string", "nullable"],
+            "website" => ["string", "nullable"],
         ]);
 
 
-        $attributes["logo"] = request()->file("logo")->store("public/logos");
+        if (isset($attributes["logo"])) {
+            $attributes["logo"] = request()->file("logo")->store("logos");
+        };
 
-        Company::create(request()->all());
+
+        Company::create($attributes);
 
         return redirect("/dashboard")->with('status', 'company added');
     }

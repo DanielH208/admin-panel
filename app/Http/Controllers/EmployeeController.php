@@ -10,12 +10,16 @@ class EmployeeController extends Controller
 {
     public function store() {
 
-        // $attributes = request()->validate([
-        //     "name" => "required"
-        // ]);
+        $attributes = request()->validate([
+            "firstname" => ["required", "string"],
+            "lastname" => ["required", "string"],
+            "company" => ["required"],
+            "email" => ["string", "nullable"],
+            "phone" => ["size:11", "nullable"]
+        ]);
 
 
-        Employee::create(request()->all());
+        Employee::create($attributes);
 
         return redirect("/dashboard")->with('status', 'Employee added');
     }

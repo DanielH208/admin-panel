@@ -11,7 +11,7 @@
                 <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Name')" />
-                    <x-text-input id="name" class="block mt-1 w-full" type="name" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
 
@@ -32,11 +32,11 @@
                 <!-- Website -->
                 <div>
                     <x-input-label for="website" :value="__('Website')" />
-                    <x-text-input id="website" class="block mt-1 w-full" type="website" name="website" :value="old('website')" autofocus />
+                    <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" :value="old('website')" autofocus />
                     <x-input-error :messages="$errors->get('website')" class="mt-2" />
                 </div>
 
-                <x-primary-button class="ms-3">
+                <x-primary-button>
                     {{ __('Add Company') }}
                 </x-primary-button>
 

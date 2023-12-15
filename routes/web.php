@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,12 +28,15 @@ Route::get('/companies', function () {
     return view('companies');
 })->middleware(['auth', 'verified'])->name('companies');
 
-
 Route::post('/companies', [CompanyController::class, "store"])->middleware(['auth', 'verified'])->name('companies');
+
 
 Route::get('/employees', function () {
     return view('employees');
 })->middleware(['auth', 'verified'])->name('employees');
+
+Route::post('/employees', [EmployeeController::class, "store"])->middleware(['auth', 'verified'])->name('employees');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

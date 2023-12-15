@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class EmployeeController extends Controller
 {
     public function store() {
 
@@ -15,8 +15,8 @@ class CompanyController extends Controller
         // ]);
 
 
-        Company::create(request()->all());
+        Employee::create(request()->all());
 
-        return redirect("/dashboard")->with('status', 'company added');
+        return redirect("/dashboard")->with('status', 'Employee added');
     }
 }

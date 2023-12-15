@@ -12,10 +12,10 @@ class CompanyController extends Controller
     public function store() {
 
         $attributes = request()->validate([
-            "name" => ["required", "string"],
+            "name" => ["required", "string", "max:100"],
+            "email" => ["string", "nullable", "unique:companies", "max:100", "regex:/(.*)\.com$/i"],
             "logo" => ["image"],
-            "email" => ["string", "nullable"],
-            "website" => ["string", "nullable"],
+            "website" => ["string", "nullable", "url", "max:1000"],
         ]);
 
 

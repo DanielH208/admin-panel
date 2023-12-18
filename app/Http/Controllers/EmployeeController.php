@@ -21,6 +21,17 @@ class EmployeeController extends Controller
 
         Employee::create($attributes);
 
-        return redirect("/dashboard")->with('status', 'Employee added');
+        return redirect("/employees")->with('status', 'Employee added');
+    }
+
+
+    public function create() {
+        return view('employees.create');
+    }
+
+    public function index() {
+
+        return view("employees.dashboard");
+
     }
 }

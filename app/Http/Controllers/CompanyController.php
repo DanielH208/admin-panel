@@ -26,7 +26,7 @@ class CompanyController extends Controller
 
         Company::create($attributes);
 
-        return redirect("/dashboard")->with('status', 'company added');
+        return redirect("/companies")->with('status', 'company added');
     }
 
     public function create() {
@@ -35,7 +35,15 @@ class CompanyController extends Controller
 
     public function index() {
 
-        return view("companies.index");
+        return view("companies.index", [
+            "companies" => Company::paginate(50)
+        ]);
 
+    }
+
+    public function show(Company $company) {
+        return view("companies.show-company", [
+            "company" => $company
+        ]);
     }
 }

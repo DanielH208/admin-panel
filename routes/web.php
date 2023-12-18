@@ -38,10 +38,17 @@ Route::get('/employees', function () {
 Route::post('/employees', [EmployeeController::class, "store"])->middleware(['auth', 'verified'])->name('employees');
 
 // Dashboards
+
+// Companies
 Route::post('/companies', [CompanyController::class, "store"])->middleware(['auth', 'verified'])->name('companies.store');
 Route::get('/companies', [CompanyController::class, "index"])->middleware(['auth', 'verified'])->name('companies.index');
 Route::get('/companies/create', [CompanyController::class, "create"])->middleware(['auth', 'verified'])->name('companies.create');
-//Route::get('/companies', [CompanyController::class, "index"])->middleware(['auth', 'verified'])->name('companies.view');
+Route::get('/companies/{company}', [CompanyController::class, "show"])->middleware(['auth', 'verified'])->name('companies.show');;
+
+// Employees
+Route::post('/employees', [EmployeeController::class, "store"])->middleware(['auth', 'verified'])->name('employees.store');
+Route::get('/employees', [EmployeeController::class, "index"])->middleware(['auth', 'verified'])->name('employees.index');
+Route::get('/employees/create', [EmployeeController::class, "create"])->middleware(['auth', 'verified'])->name('employees.create');
 
 
 

@@ -31,7 +31,15 @@ class EmployeeController extends Controller
 
     public function index() {
 
-        return view("employees.dashboard");
+        return view("employees.dashboard", [
+            "employees" => Employee::paginate(50)
+        ]);
 
+    }
+
+    public function show(Employee $employee) {
+        return view("employees.show-employee", [
+            "employee" => $employee
+        ]);
     }
 }

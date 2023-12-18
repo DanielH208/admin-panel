@@ -28,4 +28,14 @@ class CompanyController extends Controller
 
         return redirect("/dashboard")->with('status', 'company added');
     }
+
+    public function create() {
+        return view('companies.companies');
+    }
+
+    public function index() {
+
+        return view("companies.index");
+
+    }
 }

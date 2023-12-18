@@ -24,11 +24,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/companies', function () {
-    return view('companies');
-})->middleware(['auth', 'verified'])->name('companies');
+// Route::get('/companies', function () {
+//     return view('companies.companies');
+// })->middleware(['auth', 'verified'])->name('companies');
 
-Route::post('/companies', [CompanyController::class, "store"])->middleware(['auth', 'verified'])->name('companies');
+
 
 
 Route::get('/employees', function () {
@@ -36,6 +36,13 @@ Route::get('/employees', function () {
 })->middleware(['auth', 'verified'])->name('employees');
 
 Route::post('/employees', [EmployeeController::class, "store"])->middleware(['auth', 'verified'])->name('employees');
+
+// Dashboards
+Route::post('/companies', [CompanyController::class, "store"])->middleware(['auth', 'verified'])->name('companies.store');
+Route::get('/companies', [CompanyController::class, "index"])->middleware(['auth', 'verified'])->name('companies.index');
+Route::get('/companies/create', [CompanyController::class, "create"])->middleware(['auth', 'verified'])->name('companies.create');
+//Route::get('/companies', [CompanyController::class, "index"])->middleware(['auth', 'verified'])->name('companies.view');
+
 
 
 Route::middleware('auth')->group(function () {

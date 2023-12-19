@@ -44,8 +44,7 @@
                     </div>
                 </div>
             </div>
+            {{ $employees->links() }}
         </div>
-
-
     </x-slot>
 </x-app-layout>

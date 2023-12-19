@@ -32,7 +32,7 @@ class EmployeeController extends Controller
     public function index() {
 
         return view("employees.dashboard", [
-            "employees" => Employee::paginate(10)
+            "employees" => Employee::paginate(15)
         ]);
 
     }

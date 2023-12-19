@@ -46,6 +46,7 @@
                     </div>
                 </div>
             </div>
+            {{ $companies->links() }}
         </div>
     </x-slot>
 </x-app-layout>

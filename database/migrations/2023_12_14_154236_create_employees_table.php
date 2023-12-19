@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('firstname')->require();
             $table->string('lastname')->require();
-            $table->string('company')->require();
+            $table->foreignId('company')->references('id')->on('companies')->onDelete('cascade')->require();
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
         });

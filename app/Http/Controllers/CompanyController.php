@@ -26,6 +26,32 @@ class CompanyController extends Controller
 
         Company::create($attributes);
 
-        return redirect("/dashboard")->with('status', 'company added');
+        return redirect("/companies")->with('status', 'company added');
     }
+
+    public function create() {
+        return view('companies.companies');
+    }
+
+    public function index() {
+
+        return view("companies.index", [
+            "companies" => Company::paginate(10)
+        ]);
+
+    }
+
+    public function show(Company $company) {
+        return view("companies.show-company", [
+            "company" => $company
+        ]);
+    }
+
+    public function destroy(Company $company)
+    {
+        $company->delete();
+
+        return redirect("/companies")->with("success", "Post Deleted");
+    }
+
 }

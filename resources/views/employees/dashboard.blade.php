@@ -1,33 +1,36 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Employees') }}
         </h2>
-{{--
+        {{-- <x-nav-link :href="route('companies/create')" :active="request()->routeIs('companies/create')">{{ __('Add New Company') }}</x-nav-link> --}}
+        {{-- <a :href="route('/companies/create')">Add new</a> --}}
+        <x-responsive-nav-link :href="route('employees.create')">Add new</x-responsive-nav-link>
+
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">
                             <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($companies as $company)
+                                @foreach ($employees as $employee)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <div class="text-sm font-medium text-gray-900">
-                                                    <a href="/posts/{{ $post->slug }}">
-                                                        {{ $company->name }}
+                                                    <a href="/employees/{{ $employee->id }}">
+                                                        {{ $employee->firstname . " " .  $employee->lastname }}
                                                     </a>
                                                 </div>
                                             </div>
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="/admin/posts/{{ $company->id }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                            <a href="/admin/posts/{{ $employee->id }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
                                         </td>
 
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <form method="POST" action="/admin/posts/{{ $company->id }}">
+                                            <form method="POST" action="/employees/{{ $employee->id }}">
                                                 @csrf
                                                 @method('DELETE')
 
@@ -41,16 +44,8 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
-    </x-slot>
-{{--
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
         </div>
-    </div> --}}
+
+
+    </x-slot>
 </x-app-layout>

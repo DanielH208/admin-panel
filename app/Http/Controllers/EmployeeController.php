@@ -21,6 +21,32 @@ class EmployeeController extends Controller
 
         Employee::create($attributes);
 
-        return redirect("/dashboard")->with('status', 'Employee added');
+        return redirect("/employees")->with('status', 'Employee added');
+    }
+
+
+    public function create() {
+        return view('employees.create');
+    }
+
+    public function index() {
+
+        return view("employees.dashboard", [
+            "employees" => Employee::paginate(10)
+        ]);
+
+    }
+
+    public function show(Employee $employee) {
+        return view("employees.show-employee", [
+            "employee" => $employee
+        ]);
+    }
+
+    public function destroy(Employee $employee)
+    {
+        $employee->delete();
+
+        return redirect("/employees")->with("success", "Post Deleted");
     }
 }

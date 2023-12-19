@@ -32,7 +32,7 @@ class EmployeeController extends Controller
     public function index() {
 
         return view("employees.dashboard", [
-            "employees" => Employee::paginate(50)
+            "employees" => Employee::paginate(10)
         ]);
 
     }
@@ -41,5 +41,12 @@ class EmployeeController extends Controller
         return view("employees.show-employee", [
             "employee" => $employee
         ]);
+    }
+
+    public function destroy(Employee $employee)
+    {
+        $employee->delete();
+
+        return redirect("/employees")->with("success", "Post Deleted");
     }
 }

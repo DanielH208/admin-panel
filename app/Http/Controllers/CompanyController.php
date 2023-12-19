@@ -36,7 +36,7 @@ class CompanyController extends Controller
     public function index() {
 
         return view("companies.index", [
-            "companies" => Company::paginate(50)
+            "companies" => Company::paginate(10)
         ]);
 
     }
@@ -46,4 +46,12 @@ class CompanyController extends Controller
             "company" => $company
         ]);
     }
+
+    public function destroy(Company $company)
+    {
+        $company->delete();
+
+        return redirect("/companies")->with("success", "Post Deleted");
+    }
+
 }

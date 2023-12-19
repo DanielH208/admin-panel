@@ -45,6 +45,8 @@ Route::get('/companies', [CompanyController::class, "index"])->middleware(['auth
 Route::get('/companies/create', [CompanyController::class, "create"])->middleware(['auth', 'verified'])->name('companies.create');
 Route::get('/companies/{company}', [CompanyController::class, "show"])->middleware(['auth', 'verified'])->name('companies.show');
 Route::delete('/companies/{company}', [CompanyController::class, 'destroy'])->middleware(['auth', 'verified'])->name('companies.destroy');
+Route::get('/companies/{company}/edit', [CompanyController::class, 'edit'])->middleware(['auth', 'verified'])->name('companies.edit');
+Route::patch('/companies/{company}', [CompanyController::class, 'update'])->middleware(['auth', 'verified'])->name('companies.update');
 
 // Employees
 Route::post('/employees', [EmployeeController::class, "store"])->middleware(['auth', 'verified'])->name('employees.store');
@@ -52,6 +54,8 @@ Route::get('/employees', [EmployeeController::class, "index"])->middleware(['aut
 Route::get('/employees/create', [EmployeeController::class, "create"])->middleware(['auth', 'verified'])->name('employees.create');
 Route::get('/employees/{employee}', [EmployeeController::class, "show"])->middleware(['auth', 'verified'])->name('employees.show');
 Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy'])->middleware(['auth', 'verified'])->name('employees.destroy');
+Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])->middleware(['auth', 'verified'])->name('employees.edit');
+Route::patch('/employees/{employee}', [EmployeeController::class, 'update'])->middleware(['auth', 'verified'])->name('employees.update');
 
 
 

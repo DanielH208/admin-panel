@@ -54,4 +54,30 @@ class CompanyController extends Controller
         return redirect("/companies")->with("success", "Post Deleted");
     }
 
+
+    public function update(Company $company)
+    {
+        $attributes = request()->validate([
+            "name" => ["required", "string", "max:100"],
+            "email" => ["string", "nullable", "max:100", "regex:/(.*)\.com$/i"],
+            "logo" => ["image"],
+            "website" => ["string", "nullable", "url", "max:1000"],
+        ]);
+
+
+        if (isset($attributes["logo"])) {
+            $attributes["logo"] = request()->file("logo")->store("logos");
+        };
+
+        $company->update($attributes);
+
+        return redirect("/companies")->with("success", "Post Updated");
+    }
+
+    public function edit(Company $company)
+    {
+        return view("companies.edit", ["company" => $company]);
+    }
+
+
 }

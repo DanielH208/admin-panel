@@ -3,7 +3,8 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Edit Company') }}
         </h2>
-
+    </x-slot>
+    <main>
         <div class="py-12">
             <form method="POST" action="/companies/{{ $company->id }}" enctype="multipart/form-data">
                 @csrf
@@ -47,5 +48,5 @@
 
             </form>
         </div>
-    </x-slot>
+    </main>
 </x-app-layout>

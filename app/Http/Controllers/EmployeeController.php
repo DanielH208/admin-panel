@@ -49,4 +49,24 @@ class EmployeeController extends Controller
 
         return redirect("/employees")->with("success", "Post Deleted");
     }
+
+    public function update(Employee $employee)
+    {
+        $attributes = request()->validate([
+            "firstname" => ["required", "alpha", "max:25"],
+            "lastname" => ["required", "alpha", "max:25"],
+            "company" => ["required", "max:100"],
+            "email" => ["string", "nullable", "max:100", "regex:/(.*)\.com$/i"],
+            "phone" => ["digits_between:10,11", "integer", "nullable"]
+        ]);
+
+        $employee->update($attributes);
+
+        return redirect("/employees")->with("success", "Post Updated");
+    }
+
+    public function edit(Employee $employee)
+    {
+        return view("employees.edit", ["employee" => $employee]);
+    }
 }

@@ -26,7 +26,9 @@ class CompanyController extends Controller
 
         Company::create($attributes);
 
-        return redirect("/companies")->with('status', 'company added');
+        session()->flash("success", "Company Added");
+
+        return redirect("/companies");
     }
 
     public function create() {
@@ -51,7 +53,9 @@ class CompanyController extends Controller
     {
         $company->delete();
 
-        return redirect("/companies")->with("success", "Post Deleted");
+        session()->flash("success", "Company Deleted");
+
+        return redirect("/companies");
     }
 
 
@@ -71,7 +75,9 @@ class CompanyController extends Controller
 
         $company->update($attributes);
 
-        return redirect("/companies")->with("success", "Post Updated");
+        session()->flash("success", "Company Updated");
+
+        return redirect("/companies");
     }
 
     public function edit(Company $company)

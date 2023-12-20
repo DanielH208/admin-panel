@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-3xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
             {{ __('Employees') }}
         </h2>
         {{-- <x-nav-link :href="route('companies/create')" :active="request()->routeIs('companies/create')">{{ __('Add New Company') }}</x-nav-link> --}}
         {{-- <a :href="route('/companies/create')">Add new</a> --}}
-        <x-responsive-nav-link :href="route('employees.create')">Add new</x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('employees.create')" class="mb-2">Add new Employee</x-responsive-nav-link>
     </x-slot>
 
     <div class="flex flex-col">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mb-3 ">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                     <table class="w-full divide-y divide-gray-200">
@@ -18,24 +18,24 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                <a href="/employees/{{ $employee->id }}">
+                                            <div class=" font-medium text-gray-900 ">
+                                                <a href="/employees/{{ $employee->id }}" class="!text-sm sm:text-lg">
                                                     {{ $employee->firstname . " " .  $employee->lastname }}
                                                 </a>
                                             </div>
                                         </div>
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="/employees/{{ $employee->id }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right  font-medium">
+                                        <a href="/employees/{{ $employee->id }}/edit" class="text-base text-blue-500 hover:text-blue-600">Edit</a>
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-base font-medium text-gray-400">
                                         <form method="POST" action="/employees/{{ $employee->id }}">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="text-xs text-gray-400">Delete</button>
+                                            <button class="text-base">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

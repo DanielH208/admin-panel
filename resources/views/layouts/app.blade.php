@@ -23,14 +23,14 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-3/6">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 lg:w-5/6 xl:w-4/6">
                         {{ $header }}
                     </div>
                 </header>
             @endif
 
             <!-- Page Content -->
-            <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 w-3/6">
+            <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 lg:w-5/6 xl:w-4/6">
                 {{ $slot }}
             </main>
             <x-flash />

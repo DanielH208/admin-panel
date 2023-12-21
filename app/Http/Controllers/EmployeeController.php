@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -21,7 +22,9 @@ class EmployeeController extends Controller
 
         Employee::create($attributes);
 
-        return redirect("/employees")->with('status', 'Employee added');
+        session()->flash("success", "Employee Added");
+
+        return redirect("/employees");
     }
 
 
@@ -32,7 +35,7 @@ class EmployeeController extends Controller
     public function index() {
 
         return view("employees.dashboard", [
-            "employees" => Employee::paginate(10)
+            "employees" => Employee::paginate(15)
         ]);
 
     }
@@ -47,7 +50,9 @@ class EmployeeController extends Controller
     {
         $employee->delete();
 
-        return redirect("/employees")->with("success", "Post Deleted");
+        session()->flash("success", "Employee Deleted");
+
+        return redirect("/employees");
     }
 
     public function update(Employee $employee)
@@ -62,11 +67,14 @@ class EmployeeController extends Controller
 
         $employee->update($attributes);
 
-        return redirect("/employees")->with("success", "Post Updated");
+        session()->flash("success", "Employee Updated");
+
+        return redirect("/employees");
     }
 
     public function edit(Employee $employee)
     {
         return view("employees.edit", ["employee" => $employee]);
     }
+
 }

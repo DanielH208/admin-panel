@@ -26,7 +26,9 @@ class CompanyController extends Controller
 
         Company::create($attributes);
 
-        return redirect("/companies")->with('status', 'company added');
+        session()->flash("success", "Company Added");
+
+        return redirect("/companies");
     }
 
     public function create() {
@@ -36,7 +38,7 @@ class CompanyController extends Controller
     public function index() {
 
         return view("companies.index", [
-            "companies" => Company::paginate(10)
+            "companies" => Company::paginate(15)
         ]);
 
     }
@@ -51,7 +53,9 @@ class CompanyController extends Controller
     {
         $company->delete();
 
-        return redirect("/companies")->with("success", "Post Deleted");
+        session()->flash("success", "Company Deleted");
+
+        return redirect("/companies");
     }
 
 
@@ -60,7 +64,7 @@ class CompanyController extends Controller
         $attributes = request()->validate([
             "name" => ["required", "string", "max:100"],
             "email" => ["string", "nullable", "max:100", "regex:/(.*)\.com$/i"],
-            "logo" => ["image"],
+            "logo" => ["image", "dimensions:min_width=100", "dimensions:min_height=100"],
             "website" => ["string", "nullable", "url", "max:1000"],
         ]);
 
@@ -71,13 +75,16 @@ class CompanyController extends Controller
 
         $company->update($attributes);
 
-        return redirect("/companies")->with("success", "Post Updated");
+        session()->flash("success", "Company Updated");
+
+        return redirect("/companies");
     }
 
     public function edit(Company $company)
     {
         return view("companies.edit", ["company" => $company]);
     }
+
 
 
 }

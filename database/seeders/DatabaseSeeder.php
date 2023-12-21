@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => 'password',
         ]);
+
+        \App\Models\Company::factory(9)->create();
+        \App\Models\Employee::factory(50)->create();
     }
 }

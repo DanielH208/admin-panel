@@ -9,17 +9,16 @@
             <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
 
                 <div class="col-span-8">
-                    <h1>here</h1>
                     <h1 class="font-bold text-3xl lg:text-4xl mb-10">
-                        {{ $employee->firstname }}
+                        First Name: {{ $employee->firstname }}
                     </h1>
                     <h1 class="font-bold text-3xl lg:text-4xl mb-10">
-                        {{ $employee->lastname }}
+                        Last Name: {{ $employee->lastname }}
                     </h1>
 
                     <div class="space-y-4 lg:text-lg leading-loose">
                         <a href="/companies/{{ $employee->company }}">
-                            {{ $employee->company }}
+                            Company: {{ \App\Models\Employee::findCompany($employee->company) }}
                         </a>
                     </div>
 

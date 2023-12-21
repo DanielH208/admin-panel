@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -75,4 +76,5 @@ class EmployeeController extends Controller
     {
         return view("employees.edit", ["employee" => $employee]);
     }
+
 }

@@ -7,7 +7,7 @@
         {{-- <a :href="route('/companies/create')">Add new</a> --}}
         <x-responsive-nav-link :href="route('companies.create')" class="mb-2" >Add new Company</x-responsive-nav-link>
 
-        <h2 class="mb-2">* Deleting a company will delete all employees associated with that company</h2>
+        <h2 class="mb-2 text-red-500">*Deleting a company will delete all employees associated with that company</h2>
     </x-slot>
 
     <div class="flex flex-col">

@@ -64,7 +64,7 @@ class CompanyController extends Controller
         $attributes = request()->validate([
             "name" => ["required", "string", "max:100"],
             "email" => ["string", "nullable", "max:100", "regex:/(.*)\.com$/i"],
-            "logo" => ["image"],
+            "logo" => ["image", "dimensions:min_width=100", "min_height=100"],
             "website" => ["string", "nullable", "url", "max:1000"],
         ]);
 
@@ -84,6 +84,7 @@ class CompanyController extends Controller
     {
         return view("companies.edit", ["company" => $company]);
     }
+
 
 
 }

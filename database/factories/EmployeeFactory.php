@@ -21,7 +21,7 @@ class EmployeeFactory extends Factory
         return [
             'first_name' => fake()->firstName(),
             'last_name' => fake()->lastName(),
-            'company' => fake()->company(),
+            'company' => fake()->randomDigit(),
             'email' => fake()->unique()->safeEmail(),
             'phone' => intval(fake()->numerify('###########')),
         ];

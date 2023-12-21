@@ -19,7 +19,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
                                             <div class=" font-medium text-gray-900 ">
-                                                <a href="/employees/{{ $employee->id }}" class="!text-sm sm:text-lg">
+                                                <a href="/employees/{{ $employee->id }}" class="!text-sm sm:text-lg hover:text-gray-500">
                                                     {{ $employee->firstname . " " .  $employee->lastname }}
                                                 </a>
                                             </div>
@@ -27,15 +27,15 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-right  font-medium">
-                                        <a href="/employees/{{ $employee->id }}/edit" class="text-base text-blue-500 hover:text-blue-600">Edit</a>
+                                        <a href="/employees/{{ $employee->id }}/edit" class="text-base text-blue-500 hover:text-blue-800">Edit</a>
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-base font-medium text-gray-400">
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-base font-medium ">
                                         <form method="POST" action="/employees/{{ $employee->id }}">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="text-base">Delete</button>
+                                            <button class="text-base text-gray-400 hover:text-gray-800">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

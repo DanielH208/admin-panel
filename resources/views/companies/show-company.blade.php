@@ -18,7 +18,7 @@
 
                     <div class="space-y-4 leading-loose">
                         <h2 class="!text-xl sm:text-3xl mb-6 break-all">
-                            <a href="mailto:{{ $company->email }}">
+                            <a href="mailto:{{ $company->email }}" class="hover:text-gray-500">
                                 {{ $company->email }}
                             </a>
                         </h2>
@@ -26,7 +26,7 @@
 
                     <div class="space-y-4 leading-loose">
                         <h2 class="!text-xl sm:text-3xl break-all">
-                            <a href="{{ $company->website }}" target="_blank">
+                            <a href="{{ $company->website }}" target="_blank" class="hover:text-gray-500">
                                 {{ $company->website }}
                             </a>
                         </h2>

@@ -18,9 +18,9 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => fake()->company(),
+            "logo" => "logos\P0huf9Cn4ajS5Oz5QN9IzMyAJCY3nvmYpHhEbhfL.webp",
             'email' => fake()->unique()->safeEmail(),
-            'logo' => fake()->text(),
-            'website' => fake()->text(),
+            'website' => "https://www." . fake()->word() . ".com",
         ];
     }
 }

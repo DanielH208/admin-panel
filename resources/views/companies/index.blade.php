@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
+        <h2 class="font-semibold text-3xl text-gray-800 dark:text-gray-200 leading-tight mb-2">
             {{ __('Companies') }}
         </h2>
         {{-- <x-nav-link :href="route('companies/create')" :active="request()->routeIs('companies/create')">{{ __('Add New Company') }}</x-nav-link> --}}
@@ -21,7 +21,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
                                             <div class="font-medium text-gray-900">
-                                                <a href="/companies/{{ $company->id }}" class="!text-sm sm:text-lg">
+                                                <a href="/companies/{{ $company->id }}" class="!text-sm sm:text-lg hover:text-gray-500">
                                                     {{ $company->name }}
                                                 </a>
                                             </div>
@@ -29,7 +29,7 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-base font-medium">
-                                        <a href="/companies/{{ $company->id }}/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
+                                        <a href="/companies/{{ $company->id }}/edit" class="text-blue-500 hover:text-blue-800">Edit</a>
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -37,7 +37,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="text-base text-gray-400">Delete</button>
+                                            <button class="text-base text-gray-400 hover:text-gray-800">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
